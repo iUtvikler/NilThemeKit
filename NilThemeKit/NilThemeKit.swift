@@ -15,7 +15,7 @@ let kDefaultTabBarFontSize: CGFloat = 14.0
 class NilThemeKit {
     
     //MARK: Master Theme
-    class func setupTheme(#primaryColor:UIColor, secondaryColor:UIColor, fontname:String, lightStatusBar:Bool)
+    class func setupTheme(primaryColor primaryColor:UIColor, secondaryColor:UIColor, fontname:String, lightStatusBar:Bool)
     {
         if(lightStatusBar)
         {
@@ -37,14 +37,14 @@ class NilThemeKit {
     }
     
     //MARK: UINavigationBar
-    class func customizeNavigationBar(#barColor:UIColor, textColor:UIColor, buttonColor:UIColor)
+    class func customizeNavigationBar(barColor barColor:UIColor, textColor:UIColor, buttonColor:UIColor)
     {
         UINavigationBar.appearance().barTintColor = barColor
         UINavigationBar.appearance().tintColor = buttonColor
         UINavigationBar.appearance().titleTextAttributes?.updateValue(textColor, forKey: NSForegroundColorAttributeName)
     }
     
-    class func customizeNavigationBar(#barColor:UIColor, textColor:UIColor, fontName:String,fontSize:CGFloat, buttonColor:UIColor)
+    class func customizeNavigationBar(barColor barColor:UIColor, textColor:UIColor, fontName:String,fontSize:CGFloat, buttonColor:UIColor)
     {
         UINavigationBar.appearance().barTintColor = barColor
         UINavigationBar.appearance().tintColor = buttonColor
@@ -60,19 +60,19 @@ class NilThemeKit {
     
     //MARK: UIBarButtonItem
     
-    class func customizeNavigationBar(#buttonColor:UIColor)
+    class func customizeNavigationBar(buttonColor buttonColor:UIColor)
     {
         UIBarButtonItem.appearance().tintColor = buttonColor
     }
     
     //MARK: UITabBar
-    class func customizeTabBar(#barColor:UIColor, textColor:UIColor)
+    class func customizeTabBar(barColor barColor:UIColor, textColor:UIColor)
     {
         UITabBar.appearance().barTintColor = barColor
         UITabBar.appearance().tintColor = textColor
     }
     
-    class func customizeTabBar(#barColor:UIColor, textColor:UIColor, fontName:String, fontSize:CGFloat)
+    class func customizeTabBar(barColor barColor:UIColor, textColor:UIColor, fontName:String, fontSize:CGFloat)
     {
         UITabBar.appearance().barTintColor = barColor
         UITabBar.appearance().tintColor = textColor
@@ -86,19 +86,19 @@ class NilThemeKit {
     }
     
     //MARK: UIButton
-    class func customizeButton(#buttonColor:UIColor)
+    class func customizeButton(buttonColor buttonColor:UIColor)
     {
         UIButton.appearance().setTitleColor(buttonColor, forState: UIControlState.Normal)
     }
     
     //MARK: UISwitch
-    class func customizeSwitch(#switchOnColor:UIColor)
+    class func customizeSwitch(switchOnColor switchOnColor:UIColor)
     {
         UISwitch.appearance().onTintColor = switchOnColor
     }
     
     //MARK: UISearchBar
-    class func customizeSearchBar(#barColor:UIColor, buttonTintColor:UIColor)
+    class func customizeSearchBar(barColor barColor:UIColor, buttonTintColor:UIColor)
     {
         /*
         [[UISearchBar appearance] setBarTintColor:barColor];
@@ -114,31 +114,31 @@ class NilThemeKit {
     }
     
     //MARK: UIActivityIndicator
-    class func customizeActivityIndicator(#color:UIColor)
+    class func customizeActivityIndicator(color color:UIColor)
     {
         UIActivityIndicatorView.appearance().color = color
     }
     
     //MARK: UISegmentedControl
-    class func customizeSegmentedControl(#mainColor:UIColor, secondaryColor:UIColor)
+    class func customizeSegmentedControl(mainColor mainColor:UIColor, secondaryColor:UIColor)
     {
         UISegmentedControl.appearance().tintColor = mainColor
     }
     
     //MARK: UISlider
-    class func customizeSlider(#color:UIColor)
+    class func customizeSlider(color color:UIColor)
     {
         UISlider.appearance().minimumTrackTintColor = color
     }
     
     //MARK: UIToolbar
-    class func customizeToolbar(#tintColor:UIColor)
+    class func customizeToolbar(tintColor tintColor:UIColor)
     {
         UIToolbar.appearance().tintColor = tintColor
     }
     
     //MARK: UIPageControl
-    class func customizePageControl(#mainColor:UIColor)
+    class func customizePageControl(mainColor mainColor:UIColor)
     {
         UIPageControl.appearance().pageIndicatorTintColor = UIColor.lightGrayColor()
         UIPageControl.appearance().currentPageIndicatorTintColor = mainColor
@@ -148,7 +148,7 @@ class NilThemeKit {
     
     //MARK: Color utilities
     
-    class func color( #r:CGFloat, g:CGFloat, b:CGFloat ) -> UIColor
+    class func color( r r:CGFloat, g:CGFloat, b:CGFloat ) -> UIColor
     {
         let red: CGFloat = r / 255.0
         let green: CGFloat = g / 255.0
@@ -157,12 +157,12 @@ class NilThemeKit {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
     
-    class func colorWithHexString(#hex: String) -> UIColor
+    class func colorWithHexString(hex hex: String) -> UIColor
     {
         var cString: String = hex.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).uppercaseString
         
         // String should be 6 or 8 characters
-        if (countElements(cString) < 6)
+        if (cString.characters.count < 6)
         {
             return UIColor.grayColor()
         }
@@ -170,22 +170,22 @@ class NilThemeKit {
         // strip 0X if it appears
         if cString.hasPrefix("0X")
         {
-            cString = cString.substringFromIndex(advance(cString.startIndex, 2))
+            cString = cString.substringFromIndex(cString.startIndex.advancedBy(2))
         }
     
-        if (countElements(cString) != 6)
+        if (cString.characters.count != 6)
         {
             return UIColor.grayColor()
         }
     
-        var rString = cString.substringToIndex(advance(cString.startIndex, 2))
-        var gString = cString.substringFromIndex(advance(cString.startIndex, 2)).substringToIndex(advance(cString.startIndex, 4))
-        var bString = cString.substringFromIndex(advance(cString.startIndex, 4)).substringToIndex(advance(cString.startIndex, 6))
+        let rString = cString.substringToIndex(cString.startIndex.advancedBy(2))
+        let gString = cString.substringFromIndex(cString.startIndex.advancedBy(2)).substringToIndex(cString.startIndex.advancedBy(4))
+        let bString = cString.substringFromIndex(cString.startIndex.advancedBy(4)).substringToIndex(cString.startIndex.advancedBy(6))
         
         var r:CUnsignedInt = 0, g:CUnsignedInt = 0, b:CUnsignedInt = 0;
-        NSScanner.scannerWithString(rString).scanHexInt(&r)
-        NSScanner.scannerWithString(gString).scanHexInt(&g)
-        NSScanner.scannerWithString(bString).scanHexInt(&b)
+        NSScanner(string: rString).scanHexInt(&r)
+        NSScanner(string: gString).scanHexInt(&g)
+        NSScanner(string: bString).scanHexInt(&b)
         
         return NilThemeKit.color(r:CGFloat(r), g:CGFloat(g), b:CGFloat(b) )
     }

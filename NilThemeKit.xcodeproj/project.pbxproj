@@ -156,7 +156,9 @@
 		B8026EB619D53C52004D3224 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = peng;
 				TargetAttributes = {
 					B8026EBD19D53C52004D3224 = {
